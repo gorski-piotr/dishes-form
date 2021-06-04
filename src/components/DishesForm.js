@@ -118,8 +118,9 @@ function DishesForm() {
         console.log("resJSON", resJSON);
 
         if (!resJSON.errors) {
-          // console.log("Success, no errors!");
-          formReset(); //if no errors then reset the form
+          //if no errors then reset the form and show the alert with the JSON response
+          formReset();
+          alert(JSON.stringify(resJSON));
         }
       })
       .catch((error) => {
@@ -175,6 +176,7 @@ function DishesForm() {
               type="number"
               id="no_of_slices"
               name="no_of_slices"
+              min="1"
               onChange={(e) => setNo_of_slices(e.target.value)}
             />
             <br />
@@ -184,6 +186,7 @@ function DishesForm() {
               step="0.1"
               id="diameter"
               name="diameter"
+              min="10"
               onChange={(e) => setDiameter(e.target.value)}
             />
           </div>
