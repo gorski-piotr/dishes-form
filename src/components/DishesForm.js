@@ -7,38 +7,40 @@ function DishesForm() {
   const [type, setType] = useState("");
   const [no_of_slices, setNo_of_slices] = useState("");
   const [diameter, setDiameter] = useState("");
-  const [spiciness, setSpiciness] = useState("10");
+  const [spiciness_scale, setSpiciness_scale] = useState("");
   const [slices_of_bread, setSlices_of_bread] = useState("");
 
-  // state Hook for the error message
+  // state Hook for the error message (form validation)
   const [errorMessage, setErrorMessage] = useState("");
 
-  console.log("name:", name);
-  console.log("", preparation_time);
-  console.log("type:", type);
-  console.log("no_of_slices:", no_of_slices);
-  console.log("diameter:", diameter);
-  console.log("spiciness:", spiciness);
-  console.log("slices_of_bread:", slices_of_bread);
+  // console.log("name:", name);
+  // console.log("preparation time", preparation_time);
+  // console.log("type:", type);
+  // console.log("no_of_slices:", no_of_slices);
+  // console.log("diameter:", diameter);
+  // console.log("spiciness:", spiciness_scale);
+  // console.log("slices_of_bread:", slices_of_bread);
 
+  //form reset function - set all the inputs states to the initial value after submitting the form
   const formReset = () => {
     setName("");
     setPreparation_time("00:00:00");
     setType("");
     setNo_of_slices("");
     setDiameter("");
-    setSpiciness("");
+    setSpiciness_scale("");
     setSlices_of_bread("");
+    setErrorMessage("");
   };
 
-  // form validation after pressing the Submit button:
+  // handle form submit button:
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Sign In button pressed");
-    setErrorMessage("");
+    e.preventDefault(); //to stop the form submitting prevent from reloading the page
+    setErrorMessage(""); //to clear previous error messages
 
     let errors = []; //initializing the errors array
 
+    //form validation:
     if (name.trim() === "") {
       errors.push("Set the dish name!");
     }
@@ -54,6 +56,9 @@ function DishesForm() {
     if (type === "pizza" && diameter < 10) {
       errors.push("Set the correct pizza diameter! (Minimum 10cm)");
     }
+    if (type === "soup" && (spiciness_scale > 10 || spiciness_scale < 1)) {
+      errors.push("Set the correct spiciness scale! (between 1 and 10)");
+    }
     if (type === "sandwich" && slices_of_bread < 1) {
       errors.push("Set the number of bread slices!");
     }
@@ -67,14 +72,64 @@ function DishesForm() {
       return;
     }
 
-    // if errors array is empty then reset the form and submit it
-    formReset();
+    // if errors array is empty then show an alert and proceed with form submitting
     alert("Congratulations! Form submitted!");
+
+    // create an Object you want to submit (depending on the dish type)
+    let dish;
+    if (type === "pizza") {
+      dish = {
+        name: name,
+        preparation_time: preparation_time,
+        type: type,
+        no_of_slices: parseInt(no_of_slices),
+        diameter: parseFloat(diameter),
+      };
+    }
+    if (type === "soup") {
+      dish = {
+        name: name,
+        preparation_time: preparation_time,
+        type: type,
+        spiciness_scale: parseInt(spiciness_scale),
+      };
+    }
+    if (type === "sandwich") {
+      dish = {
+        name: name,
+        preparation_time: preparation_time,
+        type: type,
+        slices_of_bread: parseInt(slices_of_bread),
+      };
+    }
+
+    // POST REQUEST using FETCH API
+    fetch("https://frosty-wood-6558.getsandbox.com:443/dishes", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      // mode: "no-cors",
+      method: "POST",
+
+      body: JSON.stringify(dish),
+    })
+      .then((res) => res.json())
+      .then((resJSON) => {
+        console.log("resJSON", resJSON);
+
+        if (!resJSON.errors) {
+          // console.log("Success, no errors!");
+          formReset(); //if no errors then reset the form
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error); //if errors then diplay them in the console
+      });
   };
 
   return (
     <div className="p-10 bg-yellow-500">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} action="#">
         {/* Text input for dish name */}
         <label htmlFor="name">Dish name: </label>
         <input
@@ -120,7 +175,6 @@ function DishesForm() {
               type="number"
               id="no_of_slices"
               name="no_of_slices"
-              min="1"
               onChange={(e) => setNo_of_slices(e.target.value)}
             />
             <br />
@@ -145,9 +199,9 @@ function DishesForm() {
               name="spiciness_scale"
               min="1"
               max="10"
-              onChange={(e) => setSpiciness(e.target.value)}
+              onChange={(e) => setSpiciness_scale(e.target.value)}
             />
-            <span>{spiciness}</span>
+            <span>{spiciness_scale}</span>
           </div>
         )}
 
