@@ -129,82 +129,102 @@ function DishesForm() {
   };
 
   return (
-    <div className="p-10 bg-yellow-500">
+    <div className="p-4">
       <form onSubmit={handleSubmit} action="#">
         {/* Text input for dish name */}
-        <label htmlFor="name">Dish name: </label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          placeholder="Dish name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <br />
+        <div className="my-1">
+          <label htmlFor="name">Dish name:</label>
+          <input
+            className="border-black border rounded p-1 mx-2"
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Dish name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
 
         {/* Time input for preparation time */}
-        <label htmlFor="preparation_time">Preparation time: </label>
-        <input
-          type="time"
-          step="1"
-          name="preparation_time"
-          id="preparation_time"
-          value={preparation_time}
-          onChange={(e) => setPreparation_time(e.target.value)}
-        />
-        <br />
+        <div className="my-1">
+          <label htmlFor="preparation_time">Preparation time:</label>
+          <input
+            className="border-black border rounded p-1 mx-2"
+            type="time"
+            step="1"
+            name="preparation_time"
+            id="preparation_time"
+            value={preparation_time}
+            onChange={(e) => setPreparation_time(e.target.value)}
+          />
+        </div>
 
         {/* Select input for dish type */}
-        <label htmlFor="type">Dish type:</label>
-        <select name="type" id="type" onChange={(e) => setType(e.target.value)}>
-          <option value="" defaultValue>
-            Choose dish type
-          </option>
-          <option value="pizza">Pizza</option>
-          <option value="soup">Soup</option>
-          <option value="sandwich">Sandwich</option>
-        </select>
+        <div className="my-1">
+          <label htmlFor="type">Dish type:</label>
+          <select
+            className="border-black border rounded p-1 mx-2"
+            name="type"
+            id="type"
+            onChange={(e) => setType(e.target.value)}
+          >
+            <option value="" defaultValue>
+              Choose dish type
+            </option>
+            <option value="pizza">Pizza</option>
+            <option value="soup">Soup</option>
+            <option value="sandwich">Sandwich</option>
+          </select>
+        </div>
 
         {/********** Conditial rendering (depending on dish type) **********/}
 
         {/* additional fields for pizza */}
         {type === "pizza" && (
           <div>
-            <label htmlFor="no_of_slices">Number of slices:</label>
-            <input
-              type="number"
-              id="no_of_slices"
-              name="no_of_slices"
-              min="1"
-              onChange={(e) => setNo_of_slices(e.target.value)}
-            />
-            <br />
-            <label htmlFor="diameter">Diameter:</label>
-            <input
-              type="number"
-              step="0.1"
-              id="diameter"
-              name="diameter"
-              min="10"
-              onChange={(e) => setDiameter(e.target.value)}
-            />
+            <div className="my-1">
+              <label htmlFor="no_of_slices">Number of slices:</label>
+              <input
+                className="border-black border rounded p-1 mx-2"
+                type="number"
+                id="no_of_slices"
+                name="no_of_slices"
+                min="1"
+                onChange={(e) => setNo_of_slices(e.target.value)}
+              />
+            </div>
+            <div className="my-1">
+              <label htmlFor="diameter">Diameter:</label>
+              <input
+                className="border-black border rounded p-1 mx-2"
+                type="number"
+                step="0.1"
+                id="diameter"
+                name="diameter"
+                min="10"
+                onChange={(e) => setDiameter(e.target.value)}
+              />
+            </div>
           </div>
         )}
 
         {/* additional fields for soup */}
         {type === "soup" && (
           <div>
-            <label htmlFor="spiciness_scale">Spiciness:</label>
-            <input
-              type="range"
-              id="spiciness_scale"
-              name="spiciness_scale"
-              min="1"
-              max="10"
-              onChange={(e) => setSpiciness_scale(e.target.value)}
-            />
-            <span>{spiciness_scale}</span>
+            <div className="p-2">
+              <label htmlFor="spiciness_scale">Spiciness:</label>
+              <div className="border-black border rounded p-1 mx-2 inline">
+                <input
+                  type="range"
+                  id="spiciness_scale"
+                  name="spiciness_scale"
+                  min="1"
+                  max="10"
+                  onChange={(e) => setSpiciness_scale(e.target.value)}
+                />
+                <span>{spiciness_scale}</span>
+              </div>
+            </div>
           </div>
         )}
 
@@ -213,6 +233,7 @@ function DishesForm() {
           <div>
             <label htmlFor="slices_of_bread">Slices of bread:</label>
             <input
+              className="border-black border rounded p-1 mx-2"
               type="number"
               id="slices_of_bread"
               name="slices_of_bread"
@@ -221,8 +242,7 @@ function DishesForm() {
             />
           </div>
         )}
-        <br />
-        <input type="submit" value="Submit"></input>
+        <input className="p-2 m-2 rounded" type="submit" value="Submit"></input>
       </form>
       <ul className="text-red-600 font-bold">{errorMessage}</ul>
     </div>
