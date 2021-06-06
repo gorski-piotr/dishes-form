@@ -1,8 +1,8 @@
 # Getting Started with this project
 
-To set this project up you must have NodeJS installed.
-Open the root folder in a terminal and run "npm install" to install dependencies.
-Run "npm start" to start the webserver.
+To set this project up you must have NodeJS installed.\
+Open the root folder in a terminal and run "npm install" to install dependencies.\
+Run "npm start" to start the webserver.\
 
 ## About the project
 
@@ -12,8 +12,12 @@ I have made a research on Redux-Form, I even installed it on my project but ulti
 
 I dedicated 1-2 hours a day for this project, from June 1st to June 6th. Overall it took me around 8-10 hours to complete it. If I spent more time I would definitely improve it. I think I would desplay the validation message from API on the website, instead of validate the form before sending it to the API. I just realised about the API validation after I created my own form validation.
 
+I have also created the GitHub repository for this project so you can see my progress on the task as well as I deployed the app on the internet. All the links can be found in the Links section.
+
 ## Links
 
 [GitHub](https://github.com/gorski-piotr/dishes-form)\
+
 [Live Preview](https://piotr-gorski-dishes-form.netlify.app)\
+
 [My portfolio](https://piotr-gorski-portfolio.netlify.app/)
