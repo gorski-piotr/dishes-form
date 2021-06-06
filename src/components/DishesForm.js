@@ -169,7 +169,7 @@ function DishesForm() {
             onChange={(e) => setType(e.target.value)}
           >
             <option value="" defaultValue>
-              Choose dish type
+              Choose a dish type
             </option>
             <option value="pizza">Pizza</option>
             <option value="soup">Soup</option>
