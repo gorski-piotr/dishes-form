@@ -1,8 +1,10 @@
 # Getting Started with this project
 
-To set this project up you must have NodeJS installed.\
-Open the root folder in a terminal and run "npm install" to install dependencies.\
-Run "npm start" to start the webserver.\
+To set this project up you must have NodeJS installed.
+
+Open the root folder in a terminal and run "npm install" to install dependencies.
+
+Run "npm start" to start the webserver.
 
 ## About the project
 
@@ -16,8 +18,8 @@ I have also created the GitHub repository for this project so you can see my pro
 
 ## Links
 
-[GitHub](https://github.com/gorski-piotr/dishes-form)\
+[GitHub](https://github.com/gorski-piotr/dishes-form)
 
-[Live Preview](https://piotr-gorski-dishes-form.netlify.app)\
+[Live Preview](https://piotr-gorski-dishes-form.netlify.app)
 
 [My portfolio](https://piotr-gorski-portfolio.netlify.app/)
