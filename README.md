@@ -14,6 +14,6 @@ I dedicated 1-2 hours a day for this project, from June 1st to June 6th. Overall
 
 ## Links
 
-[GitHub](https://github.com/gorski-piotr/dishes-form)
-[Live Preview](https://piotr-gorski-dishes-form.netlify.app)
+[GitHub](https://github.com/gorski-piotr/dishes-form)\
+[Live Preview](https://piotr-gorski-dishes-form.netlify.app)\\
 [My portfolio](https://piotr-gorski-portfolio.netlify.app/)
