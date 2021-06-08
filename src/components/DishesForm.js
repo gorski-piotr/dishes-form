@@ -41,27 +41,27 @@ function DishesForm() {
     let errors = []; //initializing the errors array
 
     //form validation:
-    // if (name.trim() === "") {
-    //   errors.push("Set the dish name!");
-    // }
-    // if (preparation_time.trim() === "00:00:00") {
-    //   errors.push("Set the preparation time!");
-    // }
-    // if (type === "") {
-    //   errors.push("Set the dish type!");
-    // }
-    // if (type === "pizza" && no_of_slices < 1) {
-    //   errors.push("Set the number of pizza slices!");
-    // }
-    // if (type === "pizza" && diameter < 10) {
-    //   errors.push("Set the correct pizza diameter! (Minimum 10cm)");
-    // }
-    // if (type === "soup" && (spiciness_scale > 10 || spiciness_scale < 1)) {
-    //   errors.push("Set the correct spiciness scale! (between 1 and 10)");
-    // }
-    // if (type === "sandwich" && slices_of_bread < 1) {
-    //   errors.push("Set the number of bread slices!");
-    // }
+    if (name.trim() === "") {
+      errors.push("Set the dish name!");
+    }
+    if (preparation_time.trim() === "00:00:00") {
+      errors.push("Set the preparation time!");
+    }
+    if (type === "") {
+      errors.push("Set the dish type!");
+    }
+    if (type === "pizza" && no_of_slices < 1) {
+      errors.push("Set the number of pizza slices!");
+    }
+    if (type === "pizza" && diameter < 10) {
+      errors.push("Set the correct pizza diameter! (Minimum 10cm)");
+    }
+    if (type === "soup" && (spiciness_scale > 10 || spiciness_scale < 1)) {
+      errors.push("Set the correct spiciness scale! (between 1 and 10)");
+    }
+    if (type === "sandwich" && slices_of_bread < 1) {
+      errors.push("Set the number of bread slices!");
+    }
 
     // mapping through the errors array and setting the error message
     if (errors.length > 0) {
@@ -115,16 +115,12 @@ function DishesForm() {
     })
       .then((res) => res.json())
       .then((resJSON) => {
-        if (resJSON.id) {
+        console.log("resJSON", resJSON);
+
+        if (!resJSON.errors) {
           //if no errors then reset the form and show the alert with the JSON response
-          console.log(resJSON);
           formReset();
           alert(JSON.stringify(resJSON));
-        } else {
-          alert(`There was an error`);
-          console.log(resJSON);
-          let error = resJSON;
-          setErrorMessage(JSON.stringify(error));
         }
       })
       .catch((error) => {
