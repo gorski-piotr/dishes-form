@@ -23,3 +23,13 @@ I have also created the GitHub repository for this project so you can see my pro
 [Live Preview](https://piotr-gorski-dishes-form.netlify.app)
 
 [My portfolio](https://piotr-gorski-portfolio.netlify.app/)
+
+### Update
+
+This is the final version of the dishes-form project - the last change in the code has been performed on or before 6/6/21.
+
+The continuation of this project (for training purposes) is dishes-form-2.0:
+
+[GitHub - dishes-form-2.0](https://github.com/gorski-piotr/dishes-form-2.0)
+
+[Live Preview - dishes-form-2.0](https://piotr-gorski-dishes-form-20.netlify.app/)
